@@ -3,7 +3,6 @@ Projecto Django inicial de un blog
 ## Descripcion
 Repositorio inicial de un blog usando Django
 Incluye la configuracion base del proyecto y una app: 'posts'.
-las principales urls son 'inicio' y 'acerca'.
 ## Instalacion
 Clonar el repositorio
 ```bash
@@ -48,3 +47,10 @@ http://127.0.0.1:8000/
 ** Aplicaciones **
 
 - posts: Aplicacion para los posts del blog.
+
+** Entrar al panel de admin **
+Para entrar al panel de admin primero creamos un superusuario con 
+```
+pyhon manage.py createsuperuser
+```
+Ingresamos los datos y luego vamos a /admin/ y entramos con los datos del usuario.
