@@ -44,7 +44,7 @@ Python manage.py runserver
 Abrir:
 http://127.0.0.1:8000/
 
-**Aplicaciones**
+** Aplicaciones **
 
 - posts: Aplicacion para los posts del blog.
 
@@ -54,3 +54,15 @@ Para entrar al panel de admin primero creamos un superusuario con
 pyhon manage.py createsuperuser
 ```
 Ingresamos los datos y luego vamos a /admin/ y entramos con los datos del usuario.
+
+**Operaciones CRUD** 
+Se puede crear, ver, editar y eliminar posts.
+
+**Manejo de imagenes**
+Se puede subir una imagen a un post que se mostrara en el listado de los posts. La imagen se guardara en media/posts/.
+
+**Dependencias**
+Se añadio una dependencia: Pillow 12.3.0. Las demas dependencias estan en requirements.txt
+
+**Carga de imagenes**
+La carga de imagenes se puede probar creando un post y subiendo una imagen a dicho post. 
