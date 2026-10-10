@@ -44,11 +44,11 @@ Python manage.py runserver
 Abrir:
 http://127.0.0.1:8000/
 
-** Aplicaciones **
+**Aplicaciones**
 
 - posts: Aplicacion para los posts del blog.
 
-** Entrar al panel de admin **
+**Entrar al panel de admin**
 Para entrar al panel de admin primero creamos un superusuario con 
 ```
 pyhon manage.py createsuperuser
