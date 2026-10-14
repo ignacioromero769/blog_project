@@ -2,9 +2,9 @@
 
 {% block content %}
     {% if form.instance.pk %}
-    <h2>Crear post</h2>
-    {% else %}
     <h2>Editar post</h2>
+    {% else %}
+    <h2>Crear post</h2>
     {% endif %}
     {% if form.instance.imagen %}
     <p>Imagen actual:</p>

@@ -2,7 +2,9 @@
 
 {% block content %}
     {% load static %}
+    {% if user.is_authenticated %}
     <a href='crear_post'>Crear post</a>
+    {% endif %}
     <h2>Estos son los posts disponibles:</h2>
     {% for post in posts %}
         <article>
@@ -14,10 +16,12 @@
             <h2>
                 <a href="{% url 'detalle_post' post.slug %}">{{post.titulo}}</a>
             </h2>
-            <p>Autor: {{post.autor}} </p>
+            <p>Autor: {{post.autor.username}} </p>
             <p>Fecha de creacion: {{post.fecha_creacion}}</p>
             <p>Estado: {{post.estado}}</p>
+            {% if user.is_authenticated %}
             <p> <a href="{% url 'editar_post' post.slug %}">Editar</a> <espacio>  </espacio><a href="{% url 'eliminar_post' post.slug %}">Eliminar</a></p>
+            {% endif %}
         </article>
     {% endfor %}
 {% endblock %}

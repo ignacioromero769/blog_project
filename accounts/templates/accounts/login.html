@@ -1,0 +1,12 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+    <h2>Iniciar sesion</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <p> <button type="submit">entrar</button> <a href="{% url 'lista_posts' %}">Volver</a></p>
+        <p> ¿No tiene cuenta? <a href="{% url 'registro' %}">Crear cuenta </a> </p>
+    </form>
+{% endblock %}

@@ -44,7 +44,7 @@ Python manage.py runserver
 Abrir:
 http://127.0.0.1:8000/
 
-**Aplicaciones**
+** Aplicaciones **
 
 - posts: Aplicacion para los posts del blog.
 
@@ -66,3 +66,6 @@ Se añadio una dependencia: Pillow 12.3.0. Las demas dependencias estan en requi
 
 **Carga de imagenes**
 La carga de imagenes se puede probar creando un post y subiendo una imagen a dicho post. 
+
+**Sistema de usuarios**
+Los usuarios se pueden registrar, iniciar sesion, y cerrar sesion. Para modificar, crear o borrar un post es necesario tener una cuenta y haber iniciado sesion. Los usuarios pueden ver su perfil y editar su perfil. En la edicion de perfil se puede agregar una biografia, una foto, y un sitio web.

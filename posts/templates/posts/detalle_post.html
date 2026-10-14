@@ -1,9 +1,12 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
+    {% if post.imagen %}
+        <img src="{{ post.imagen.url }}" alt={{ post.titulo }} width="500" />
+    {% endif %}
     <h2>{{ post.titulo }}</h2>
     <p>{{ post.contenido|linebreaks }}</p>
-    <p><strong>Escrito por {{ post.autor }}</strong></p>
+    <p><strong>Escrito por {{ post.autor.username }}</strong></p>
     <p>{{ post.fecha_creacion }}</p>
     <p>Estado: {{post.estado}}</p>
 {% endblock %}

@@ -2,6 +2,19 @@
 
 <!DOCTYPE html>
 <html lang="es">
+<style>
+    .avatar-navbar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;}
+
+    .avatar-perfil{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;}
+</style>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mi blog{% endblock %}</title>
@@ -17,6 +30,28 @@
         <a href="{% url 'inicio' %}">Inicio</a>
         <a href="{% url 'acerca' %}">Acerca</a>
         <a href="{% url 'lista_posts' %}">Ver posts</a>
+        {% if user.is_authenticated %}
+            <span><a href="{% url 'ver_perfil' %}">{{ user.username }} </a></span>
+            {% if user.perfil.avatar %}
+                <img
+                    src="{{ user.perfil.avatar.url }}"
+                    alt="Avatar_de_{{ user.username }}"
+                    class="avatar-navbar" />
+            {% else %}
+                <img
+                    src="{% static 'accounts/img/sin_foto.png' %}"
+                    alt="sin_foto_de_perfil"
+                    class="avatar-navbar" />
+                
+            {% endif %}
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesion</button>
+            </form>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'registro' %}">Registrarse</a>
+        {% endif %}
     </nav>
     </header>
 
