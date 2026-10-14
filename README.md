@@ -44,7 +44,7 @@ Python manage.py runserver
 Abrir:
 http://127.0.0.1:8000/
 
-** Aplicaciones **
+**Aplicaciones**
 
 - posts: Aplicacion para los posts del blog.
 
