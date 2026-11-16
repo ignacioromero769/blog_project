@@ -84,5 +84,5 @@ Ignacio Romero
 
 El proyecto carece la variable de entorno: SECRET_KEY.
 El proyecto tiene la variable de entorno: DEBUG como True.
-No usar este proyecto en produccion real.
+No usar este proyecto en produccion real. Si se desea hacerlo asegurese de configurarlo apropiadamente.
 Este proyecto fue creado con la ayuda de herramientas IA. 
