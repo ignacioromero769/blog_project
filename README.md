@@ -2,7 +2,6 @@
 Projecto Django inicial de un blog
 ## Descripcion
 Repositorio inicial de un blog usando Django
-Incluye la configuracion base del proyecto y una app: 'posts'.
 ## Instalacion
 Clonar el repositorio
 
@@ -76,9 +75,6 @@ Para entrar al panel de admin primero creamos un superusuario con
 pyhon manage.py createsuperuser
 ```
 Ingresamos los datos y luego vamos a /admin/ y entramos con los datos del usuario.
-
-**Dependencias**
-Se añadio una dependencia: Pillow 12.3.0. Las demas dependencias estan en requirements.txt
 
 **Carga de imagenes**
 La carga de imagenes se puede probar creando un post y subiendo una imagen a dicho post. 
