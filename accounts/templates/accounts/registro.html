@@ -1,11 +1,21 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
-    <h2>Crear usuario</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <section class="panel form-card auth-card">
+        <h1>Crear usuario</h1>
 
-        <p> <button type="submit">Registrarme</button> <a href="{% url 'lista_posts' %}">Volver</a></p>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            {% if form.errors %}
+                <div class="error_message">Hay errores con el formulario</div>
+            {% endif %}
+
+            <div class="form-actions">
+                <button type="submit">Registrarme</button>
+                <a class="btn btn-alt" href="{% url 'lista_posts' %}">Volver</a>
+            </div>
+        </form>
+    </section>
 {% endblock %}

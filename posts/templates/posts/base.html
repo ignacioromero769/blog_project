@@ -2,66 +2,75 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<style>
-    .avatar-navbar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;}
 
-    .avatar-perfil{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;}
-</style>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi blog{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'posts/css/estilos.css' %}">
-    
 </head>
 
 <body>
-    <header>
-        <h1>Mi blog</h1>
+    <header class="site-header">
+        <div class="wrap header-inner">
+            <a class="logo" href="{% url 'inicio' %}">Mi blog</a>
 
-    <nav>
-        <a href="{% url 'inicio' %}">Inicio</a>
-        <a href="{% url 'acerca' %}">Acerca</a>
-        <a href="{% url 'lista_posts' %}">Ver posts</a>
-        {% if user.is_authenticated %}
-            <span><a href="{% url 'ver_perfil' %}">{{ user.username }} </a></span>
-            {% if user.perfil.avatar %}
-                <img
-                    src="{{ user.perfil.avatar.url }}"
-                    alt="Avatar_de_{{ user.username }}"
-                    class="avatar-navbar" />
-            {% else %}
-                <img
-                    src="{% static 'accounts/img/sin_foto.png' %}"
-                    alt="sin_foto_de_perfil"
-                    class="avatar-navbar" />
-                
-            {% endif %}
-            <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit">Cerrar sesion</button>
-            </form>
-        {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'registro' %}">Registrarse</a>
-        {% endif %}
-    </nav>
+            <nav class="site-nav" aria-label="Navegación principal">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'acerca' %}">Acerca</a>
+                <a href="{% url 'lista_posts' %}">Ver posts</a>
+                {% if user.is_authenticated %}
+                    <span class="user-chip">
+                        {% if user.perfil.avatar %}
+                            <img
+                                src="{{ user.perfil.avatar.url }}"
+                                alt="Avatar de {{ user.username }}"
+                                class="avatar-navbar" />
+                        {% else %}
+                            <img
+                                src="{% static 'accounts/img/sin_foto.png' %}"
+                                alt="Sin foto de perfil"
+                                class="avatar-navbar" />
+                        {% endif %}
+                        <a href="{% url 'ver_perfil' %}">{{ user.username }}</a>
+                    </span>
+                    <form class="logout-form" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-small btn-alt">Cerrar sesión</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'registro' %}">Registrarse</a>
+                {% endif %}
+            </nav>
+        </div>
     </header>
 
-    <main>
+    <main class="wrap site-main">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer>
-        <p>Creado con Django</p>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-logo">Mi blog</div>
+            <p>Creado con Django</p>
+        </div>
     </footer>
 </body>
+
 </html>

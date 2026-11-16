@@ -5,6 +5,7 @@ Repositorio inicial de un blog usando Django
 Incluye la configuracion base del proyecto y una app: 'posts'.
 ## Instalacion
 Clonar el repositorio
+
 ```bash
 git clone URL_DEL_REPOSITORIO
 ```
@@ -27,26 +28,47 @@ En windows PowerShell:
 .\venv\scripts\activate.ps1
 ```
 
-En Linux o macOS:
+En windows cmd:
 ```
-source venv/bin/activate
+.\venv\scripts\activate
 ```
+
+Luego es necesario instalar las dependencias
 
 Instalar dependencias:
 ```
 pip install -r requirements.txt
 ```
 
+Para crear la base de datos hay que aplicar las migraciones.
+Aplicar migraciones:
+
+```
+python manage.py migrate
+```
+
+Finalmente iniciamos el servidor.
 Iniciar servidor:
 ```
-Python manage.py runserver
+python manage.py runserver
 ```
 Abrir:
 http://127.0.0.1:8000/
 
+## Informacion
+**Tecnologias**
+Este project usa principalmente Python, Django, SQLite y pillow.
+
+**Funcionalidades**
+Este blog permite ver posts, registrarse, iniciar y cerrar sesion, CRUD de los posts con imagenes, editar perfil, subir foto de perfil y modificar contraseña.
+
+Solo los usuarios registrados pueden crear posts. Una vez creado el post solo el autor puede modificarlo o eliminarlo.
+
+
 **Aplicaciones**
 
 - posts: Aplicacion para los posts del blog.
+- accounts: Aplicacion para los perfiles y usuarios
 
 **Entrar al panel de admin**
 Para entrar al panel de admin primero creamos un superusuario con 
@@ -55,17 +77,16 @@ pyhon manage.py createsuperuser
 ```
 Ingresamos los datos y luego vamos a /admin/ y entramos con los datos del usuario.
 
-**Operaciones CRUD** 
-Se puede crear, ver, editar y eliminar posts.
-
-**Manejo de imagenes**
-Se puede subir una imagen a un post que se mostrara en el listado de los posts. La imagen se guardara en media/posts/.
-
 **Dependencias**
 Se añadio una dependencia: Pillow 12.3.0. Las demas dependencias estan en requirements.txt
 
 **Carga de imagenes**
 La carga de imagenes se puede probar creando un post y subiendo una imagen a dicho post. 
 
-**Sistema de usuarios**
-Los usuarios se pueden registrar, iniciar sesion, y cerrar sesion. Para modificar, crear o borrar un post es necesario tener una cuenta y haber iniciado sesion. Los usuarios pueden ver su perfil y editar su perfil. En la edicion de perfil se puede agregar una biografia, una foto, y un sitio web.
+**Autor**
+Ignacio Romero
+
+El proyecto carece la variable de entorno: SECRET_KEY.
+El proyecto tiene la variable de entorno: DEBUG como True.
+No usar este proyecto en produccion real.
+Este proyecto fue creado con la ayuda de herramientas IA. 

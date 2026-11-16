@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistroUsuarioForm, PerfilForm
 from .models import Perfil
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def registro(request):
     if request.method == "POST":
@@ -9,8 +10,12 @@ def registro(request):
 
         if form.is_valid():
             user = form.save()
+            messages.success(request, "Registro exitoso")
             Perfil.objects.create(user=user)
             return redirect("login")
+        else:
+            contexto = {"form":form}
+            return render(request, "accounts/registro.html", contexto)
     else:
         form = RegistroUsuarioForm()
         contexto = {"form":form}
@@ -24,8 +29,13 @@ def editar_perfil(request):
         form = PerfilForm(request.POST, request.FILES, instance=perfil)
 
         if form.is_valid():
+            messages.success(request, "Perfil actualizado")
             form.save()
-            return redirect("lista_posts")
+            
+            return redirect("ver_perfil")
+        else:
+            contexto = {"form":form}
+            return render(request, "accounts/editar_perfil.html", contexto)
     else:
         form = PerfilForm(instance=perfil)
         contexto = {"form":form}

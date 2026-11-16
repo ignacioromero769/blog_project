@@ -17,11 +17,16 @@ class Post(models.Model):
     imagen = models.ImageField(upload_to="posts/", null=True, blank=True)
     slug = models.SlugField(max_length=220, unique=True, blank=True, null=True)
 
-    def save(self, *args, **kwards):
+    def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.titulo)
+            base = slugify(self.titulo) or "post"
+            slug, n = base, 2
+            while Post.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug, n = f"{base}-{n}", n + 1
+            self.slug = slug
 
-        super().save(*args, **kwards)
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.titulo

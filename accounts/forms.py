@@ -14,5 +14,3 @@ class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = ["biografia", "link_web", "avatar"]
-
-# 12ed9129IE2I

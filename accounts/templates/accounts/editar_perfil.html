@@ -1,11 +1,21 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
-    <h2>Editar perfil</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <section class="panel form-card">
+        <h1>Editar perfil</h1>
 
-        <p> <button type="submit">Guardar cambios</button> <a href="{% url 'lista_posts' %}">Volver</a></p>
-    </form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <button type="submit">Guardar cambios</button>
+                <a class="btn btn-alt" href="{% url 'lista_posts' %}">Volver</a>
+            </div>
+        </form>
+
+        <p class="form-note">
+            <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+        </p>
+    </section>
 {% endblock %}

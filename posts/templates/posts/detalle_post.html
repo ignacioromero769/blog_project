@@ -1,12 +1,27 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
-    {% if post.imagen %}
-        <img src="{{ post.imagen.url }}" alt={{ post.titulo }} width="500" />
-    {% endif %}
-    <h2>{{ post.titulo }}</h2>
-    <p>{{ post.contenido|linebreaks }}</p>
-    <p><strong>Escrito por {{ post.autor.username }}</strong></p>
-    <p>{{ post.fecha_creacion }}</p>
-    <p>Estado: {{post.estado}}</p>
+    <article class="panel post-detail">
+        <h1>{{ post.titulo }}</h1>
+
+        <div class="post-meta">
+            <span>Escrito por <strong>{{ post.autor.username }}</strong></span>
+            <span>{{ post.fecha_creacion }}</span>
+            <span class="tag tag-{{ post.estado }}">{{ post.estado }}</span>
+        </div>
+
+        {% if post.imagen %}
+            <figure class="post-hero">
+                <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" />
+            </figure>
+        {% endif %}
+
+        <div class="post-body">
+            {{ post.contenido|linebreaks }}
+        </div>
+    </article>
+
+    <p class="back-row">
+        <a class="btn btn-alt" href="{% url 'lista_posts' %}">Volver a los posts</a>
+    </p>
 {% endblock %}
