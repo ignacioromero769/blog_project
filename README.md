@@ -72,7 +72,7 @@ Solo los usuarios registrados pueden crear posts. Una vez creado el post solo el
 **Entrar al panel de admin**
 Para entrar al panel de admin primero creamos un superusuario con 
 ```
-pyhon manage.py createsuperuser
+python manage.py createsuperuser
 ```
 Ingresamos los datos y luego vamos a /admin/ y entramos con los datos del usuario.
 
@@ -82,7 +82,7 @@ La carga de imagenes se puede probar creando un post y subiendo una imagen a dic
 **Autor**
 Ignacio Romero
 
-El proyecto carece la variable de entorno: SECRET_KEY.
+El proyecto usa un placeholder como SECRET_KEY. Nunca usar el placeholder en produccion real.
 El proyecto tiene la variable de entorno: DEBUG como True.
 No usar este proyecto en produccion real. Si se desea hacerlo asegurese de configurarlo apropiadamente.
 Este proyecto fue creado con la ayuda de herramientas IA. 
